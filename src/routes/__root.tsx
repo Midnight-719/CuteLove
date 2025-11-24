@@ -32,7 +32,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider value={system}>
-        <Navigation />
         <Outlet />
         <Toaster />
         <ReactQueryDevtools initialIsOpen={false} />
@@ -41,38 +40,6 @@ function RootComponent() {
   )
 }
 
-function Navigation() {
-  const location = useLocation()
-  
-  const navItems = [
-    { to: '/', label: '首页' },
-    { to: '/about', label: '关于' },
-    { to: '/work', label: '作品' },
-    { to: '/click', label: '点击' },
-    { to: '/allclick', label: '全部点击' },
-    { to: '/content', label: '内容' },
-  ]
-
-  return (
-    <nav className="navbar">
-      <ul className="nav-list">
-        {navItems.map((item) => {
-          const isActive = location.pathname === item.to
-          return (
-            <li key={item.to}>
-              <Link
-                to={item.to}
-                className={isActive ? 'nav-link active' : 'nav-link'}
-              >
-                {item.label}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
-  )
-}
 
 function NotFoundComponent() {
   return (

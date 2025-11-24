@@ -92,3 +92,64 @@ body {
 .game-info {
   margin-left: 20px;
 }
+
+@keyframes navbarEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes navbarLinkPop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+
+.nav-link-wrapper {
+  text-decoration: none;
+}
+
+[data-nav-animated="true"] {
+  position: relative;
+  overflow: hidden;
+  animation: navbarEntry 0.8s ease forwards;
+}
+
+[data-nav-animated="true"] .nav-link-pop {
+  animation: navbarLinkPop 0.5s ease forwards;
+  opacity: 0;
+}
+
+.nav-glow-ring {
+  position: absolute;
+  inset: 6px 12px auto;
+  height: 64px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(168, 36, 161, 0.25),
+    transparent 60%
+  );
+  filter: blur(18px);
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-nav-animated="true"] .nav-glow-ring {
+  opacity: 1;
+  animation: navbarEntry 1s ease forwards;
+}

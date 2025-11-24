@@ -10,30 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkRouteImport } from './routes/work'
-import { Route as ContentRouteImport } from './routes/content'
-import { Route as ClickRouteImport } from './routes/click'
-import { Route as AllclickRouteImport } from './routes/allclick'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DetailsIdRouteImport } from './routes/details.$id'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContentRoute = ContentRouteImport.update({
-  id: '/content',
-  path: '/content',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClickRoute = ClickRouteImport.update({
-  id: '/click',
-  path: '/click',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AllclickRoute = AllclickRouteImport.update({
-  id: '/allclick',
-  path: '/allclick',
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -46,54 +35,48 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DetailsIdRoute = DetailsIdRouteImport.update({
+  id: '/details/$id',
+  path: '/details/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/allclick': typeof AllclickRoute
-  '/click': typeof ClickRoute
-  '/content': typeof ContentRoute
+  '/schedule': typeof ScheduleRoute
   '/work': typeof WorkRoute
+  '/details/$id': typeof DetailsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/allclick': typeof AllclickRoute
-  '/click': typeof ClickRoute
-  '/content': typeof ContentRoute
+  '/schedule': typeof ScheduleRoute
   '/work': typeof WorkRoute
+  '/details/$id': typeof DetailsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/allclick': typeof AllclickRoute
-  '/click': typeof ClickRoute
-  '/content': typeof ContentRoute
+  '/schedule': typeof ScheduleRoute
   '/work': typeof WorkRoute
+  '/details/$id': typeof DetailsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/allclick' | '/click' | '/content' | '/work'
+  fullPaths: '/' | '/about' | '/schedule' | '/work' | '/details/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/allclick' | '/click' | '/content' | '/work'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/allclick'
-    | '/click'
-    | '/content'
-    | '/work'
+  to: '/' | '/about' | '/schedule' | '/work' | '/details/$id'
+  id: '__root__' | '/' | '/about' | '/schedule' | '/work' | '/details/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AllclickRoute: typeof AllclickRoute
-  ClickRoute: typeof ClickRoute
-  ContentRoute: typeof ContentRoute
+  ScheduleRoute: typeof ScheduleRoute
   WorkRoute: typeof WorkRoute
+  DetailsIdRoute: typeof DetailsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -105,25 +88,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/content': {
-      id: '/content'
-      path: '/content'
-      fullPath: '/content'
-      preLoaderRoute: typeof ContentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/click': {
-      id: '/click'
-      path: '/click'
-      fullPath: '/click'
-      preLoaderRoute: typeof ClickRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/allclick': {
-      id: '/allclick'
-      path: '/allclick'
-      fullPath: '/allclick'
-      preLoaderRoute: typeof AllclickRouteImport
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -140,16 +109,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/details/$id': {
+      id: '/details/$id'
+      path: '/details/$id'
+      fullPath: '/details/$id'
+      preLoaderRoute: typeof DetailsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AllclickRoute: AllclickRoute,
-  ClickRoute: ClickRoute,
-  ContentRoute: ContentRoute,
+  ScheduleRoute: ScheduleRoute,
   WorkRoute: WorkRoute,
+  DetailsIdRoute: DetailsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
