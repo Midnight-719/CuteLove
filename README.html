@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThaiLand GL CPS - README</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 40px;
+      position: relative;
+    }
+
+    .lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: white;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      display: flex;
+      gap: 5px;
+    }
+
+    .lang-switcher button {
+      padding: 8px 16px;
+      border: 2px solid #805ad5;
+      background: white;
+      color: #805ad5;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+
+    .lang-switcher button:hover {
+      background: #f0f0f0;
+    }
+
+    .lang-switcher button.active {
+      background: #805ad5;
+      color: white;
+    }
+
+    .lang-content {
+      display: none;
+    }
+
+    .lang-content.active {
+      display: block;
+    }
+
+    h1 {
+      color: #805ad5;
+      border-bottom: 3px solid #805ad5;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      color: #553c9a;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    h3 {
+      color: #6b46c1;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 15px 0;
+      border-left: 4px solid #805ad5;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #805ad5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .badge-purple {
+      background: #805ad5;
+      color: white;
+    }
+
+    .badge-blue {
+      background: #3182ce;
+      color: white;
+    }
+
+    .badge-green {
+      background: #38a169;
+      color: white;
+    }
+
+    blockquote {
+      border-left: 4px solid #805ad5;
+      padding-left: 15px;
+      margin: 15px 0;
+      color: #666;
+      font-style: italic;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #805ad5;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      .lang-switcher {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switcher">
+    <button id="btn-zh" class="active" onclick="switchLang('zh')">中文</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <div class="container">
+    <!-- 中文内容 -->
+    <div id="content-zh" class="lang-content active">
+      <h1>ThaiLand GL CPS</h1>
+      <p>一个展示泰国 GL（Girls' Love）CP 相关电视剧和节目的现代化 Web 应用。</p>
+
+      <h2>✨ 特性</h2>
+      <ul>
+        <li>🎨 <strong>现代化 UI</strong> - 基于 Chakra UI v3 构建的美观界面</li>
+        <li>🌙 <strong>暗色模式</strong> - 支持明暗主题切换</li>
+        <li>📱 <strong>响应式设计</strong> - 完美适配桌面和移动设备</li>
+        <li>🎬 <strong>电视剧展示</strong> - 精美的卡片式布局展示电视剧信息</li>
+        <li>➕ <strong>动态添加</strong> - 支持添加新的电视剧到列表</li>
+        <li>💾 <strong>本地存储</strong> - 使用 localStorage 保存数据</li>
+        <li>⚡ <strong>快速路由</strong> - 基于 TanStack Router 的高性能路由系统</li>
+      </ul>
+
+      <h2>🛠️ 技术栈</h2>
+      <ul>
+        <li><strong>React 19</strong> - 最新的 React 框架</li>
+        <li><strong>TypeScript</strong> - 类型安全的 JavaScript</li>
+        <li><strong>Chakra UI v3</strong> - 现代化的 UI 组件库</li>
+        <li><strong>TanStack Router</strong> - 类型安全的路由解决方案</li>
+        <li><strong>TanStack Query</strong> - 强大的数据同步库</li>
+        <li><strong>Vite</strong> - 极速的前端构建工具</li>
+        <li><strong>React Icons</strong> - 丰富的图标库</li>
+      </ul>
+
+      <h2>📦 安装</h2>
+      <p>确保你的系统已安装 Node.js (推荐 v18 或更高版本) 和 npm。</p>
+      <pre><code># 克隆项目
+git clone &lt;repository-url&gt;
+cd my_ui_demo
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev</code></pre>
+      <p>开发服务器将在 <code>http://localhost:3000</code> 启动。</p>
+
+      <h2>🚀 使用</h2>
+      <h3>开发模式</h3>
+      <pre><code>npm run dev</code></pre>
+
+      <h3>构建生产版本</h3>
+      <pre><code>npm run build</code></pre>
+      <p>构建产物将输出到 <code>dist/</code> 目录。</p>
+
+      <h2>📁 项目结构</h2>
+      <pre><code>my_ui_demo/
+├── src/
+│   ├── components/          # 可复用组件
+│   │   ├── layout/         # 布局组件（Header, Sidebar, Layout）
+│   │   └── ui/             # UI 组件（ColorMode, Toaster, Tooltip）
+│   ├── routes/             # 路由页面
+│   │   ├── index.tsx       # 首页（电视剧列表）
+│   │   ├── about.tsx       # 关于页面
+│   │   ├── work.tsx        # 作品页面
+│   │   ├── schedule.tsx    # 日程页面
+│   │   └── details.$id.tsx # 详情页面
+│   ├── data/               # 数据文件
+│   │   └── shows.ts        # 电视剧数据
+│   ├── theme/              # 主题配置
+│   └── main.tsx            # 应用入口
+├── public/                 # 静态资源
+├── package.json
+├── vite.config.ts
+└── tsconfig.json</code></pre>
+
+      <h2>🎯 主要功能</h2>
+      <h3>首页</h3>
+      <ul>
+        <li>展示所有电视剧的卡片网格</li>
+        <li>每个卡片显示标题、描述、价格和封面图</li>
+        <li>点击卡片可查看详情</li>
+        <li>支持添加新电视剧</li>
+      </ul>
+
+      <h3>添加电视剧</h3>
+      <ul>
+        <li>点击 "+" 卡片打开添加对话框</li>
+        <li>填写标题、描述、价格和图片 URL</li>
+        <li>新添加的电视剧会保存到 localStorage</li>
+      </ul>
+
+      <h3>路由页面</h3>
+      <ul>
+        <li><strong>首页</strong> (<code>/</code>) - 电视剧列表</li>
+        <li><strong>日程</strong> (<code>/schedule</code>) - 日程安排</li>
+        <li><strong>作品</strong> (<code>/work</code>) - 作品列表</li>
+        <li><strong>关于</strong> (<code>/about</code>) - 关于信息</li>
+        <li><strong>详情</strong> (<code>/details/:id</code>) - 电视剧详情</li>
+      </ul>
+
+      <h2>🎨 主题定制</h2>
+      <p>项目使用 Chakra UI v3 的主题系统，可以在 <code>src/theme/</code> 目录下自定义主题配置。</p>
+
+      <h2>📝 开发规范</h2>
+      <p>本项目遵循 Chakra UI v3 的最佳实践：</p>
+      <ul>
+        <li>使用 <code>@chakra-ui/react</code> 导入核心组件</li>
+        <li>使用 <code>components/ui</code> 导入自定义 UI 组件</li>
+        <li>使用 <code>toaster.create()</code> 替代 <code>useToast()</code></li>
+        <li>使用 <code>Dialog</code> 替代 <code>Modal</code></li>
+        <li>使用 <code>colorPalette</code> 替代 <code>colorScheme</code></li>
+        <li>使用 <code>VStack</code>/<code>HStack</code> 替代 <code>Stack</code></li>
+      </ul>
+
+      <h2>🤝 贡献</h2>
+      <p>欢迎提交 Issue 和 Pull Request！</p>
+
+      <h2>📄 许可证</h2>
+      <p>ISC</p>
+
+      <h2>👤 作者</h2>
+      <p>创建于 2024</p>
+
+      <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+      <p><strong>注意</strong>: 这是一个演示项目，用于展示现代 React 开发的最佳实践。</p>
+    </div>
+
+    <!-- 英文内容 -->
+    <div id="content-en" class="lang-content">
+      <h1>ThaiLand GL CPS</h1>
+      <p>A modern web application showcasing Thai GL (Girls' Love) CP-related TV dramas and shows.</p>
+
+      <h2>✨ Features</h2>
+      <ul>
+        <li>🎨 <strong>Modern UI</strong> - Beautiful interface built with Chakra UI v3</li>
+        <li>🌙 <strong>Dark Mode</strong> - Support for light/dark theme switching</li>
+        <li>📱 <strong>Responsive Design</strong> - Perfect adaptation for desktop and mobile devices</li>
+        <li>🎬 <strong>TV Drama Showcase</strong> - Beautiful card-based layout for displaying drama information</li>
+        <li>➕ <strong>Dynamic Addition</strong> - Support for adding new dramas to the list</li>
+        <li>💾 <strong>Local Storage</strong> - Data persistence using localStorage</li>
+        <li>⚡ <strong>Fast Routing</strong> - High-performance routing system based on TanStack Router</li>
+      </ul>
+
+      <h2>🛠️ Tech Stack</h2>
+      <ul>
+        <li><strong>React 19</strong> - Latest React framework</li>
+        <li><strong>TypeScript</strong> - Type-safe JavaScript</li>
+        <li><strong>Chakra UI v3</strong> - Modern UI component library</li>
+        <li><strong>TanStack Router</strong> - Type-safe routing solution</li>
+        <li><strong>TanStack Query</strong> - Powerful data synchronization library</li>
+        <li><strong>Vite</strong> - Lightning-fast frontend build tool</li>
+        <li><strong>React Icons</strong> - Rich icon library</li>
+      </ul>
+
+      <h2>📦 Installation</h2>
+      <p>Make sure you have Node.js (v18 or higher recommended) and npm installed on your system.</p>
+      <pre><code># Clone the repository
+git clone &lt;repository-url&gt;
+cd my_ui_demo
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev</code></pre>
+      <p>The development server will start at <code>http://localhost:3000</code>.</p>
+
+      <h2>🚀 Usage</h2>
+      <h3>Development Mode</h3>
+      <pre><code>npm run dev</code></pre>
+
+      <h3>Build for Production</h3>
+      <pre><code>npm run build</code></pre>
+      <p>The build output will be in the <code>dist/</code> directory.</p>
+
+      <h2>📁 Project Structure</h2>
+      <pre><code>my_ui_demo/
+├── src/
+│   ├── components/          # Reusable components
+│   │   ├── layout/         # Layout components (Header, Sidebar, Layout)
+│   │   └── ui/             # UI components (ColorMode, Toaster, Tooltip)
+│   ├── routes/             # Route pages
+│   │   ├── index.tsx       # Home page (drama list)
+│   │   ├── about.tsx       # About page
+│   │   ├── work.tsx        # Work page
+│   │   ├── schedule.tsx    # Schedule page
+│   │   └── details.$id.tsx # Details page
+│   ├── data/               # Data files
+│   │   └── shows.ts        # TV drama data
+│   ├── theme/              # Theme configuration
+│   └── main.tsx            # Application entry point
+├── public/                 # Static assets
+├── package.json
+├── vite.config.ts
+└── tsconfig.json</code></pre>
+
+      <h2>🎯 Main Features</h2>
+      <h3>Home Page</h3>
+      <ul>
+        <li>Display all dramas in a card grid</li>
+        <li>Each card shows title, description, price, and cover image</li>
+        <li>Click on a card to view details</li>
+        <li>Support for adding new dramas</li>
+      </ul>
+
+      <h3>Add Drama</h3>
+      <ul>
+        <li>Click the "+" card to open the add dialog</li>
+        <li>Fill in title, description, price, and image URL</li>
+        <li>Newly added dramas are saved to localStorage</li>
+      </ul>
+
+      <h3>Route Pages</h3>
+      <ul>
+        <li><strong>Home</strong> (<code>/</code>) - Drama list</li>
+        <li><strong>Schedule</strong> (<code>/schedule</code>) - Schedule</li>
+        <li><strong>Work</strong> (<code>/work</code>) - Work list</li>
+        <li><strong>About</strong> (<code>/about</code>) - About information</li>
+        <li><strong>Details</strong> (<code>/details/:id</code>) - Drama details</li>
+      </ul>
+
+      <h2>🎨 Theme Customization</h2>
+      <p>The project uses Chakra UI v3's theme system. You can customize the theme configuration in the <code>src/theme/</code> directory.</p>
+
+      <h2>📝 Development Guidelines</h2>
+      <p>This project follows Chakra UI v3 best practices:</p>
+      <ul>
+        <li>Import core components from <code>@chakra-ui/react</code></li>
+        <li>Import custom UI components from <code>components/ui</code></li>
+        <li>Use <code>toaster.create()</code> instead of <code>useToast()</code></li>
+        <li>Use <code>Dialog</code> instead of <code>Modal</code></li>
+        <li>Use <code>colorPalette</code> instead of <code>colorScheme</code></li>
+        <li>Use <code>VStack</code>/<code>HStack</code> instead of <code>Stack</code></li>
+      </ul>
+
+      <h2>🤝 Contributing</h2>
+      <p>Issues and Pull Requests are welcome!</p>
+
+      <h2>📄 License</h2>
+      <p>ISC</p>
+
+      <h2>👤 Author</h2>
+      <p>Created in 2024</p>
+
+      <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+      <p><strong>Note</strong>: This is a demo project showcasing best practices in modern React development.</p>
+    </div>
+  </div>
+
+  <script>
+    // 从 localStorage 读取语言偏好
+    const savedLang = localStorage.getItem('readme-lang') || 'zh';
+    
+    // 初始化语言
+    function initLang() {
+      switchLang(savedLang);
+    }
+
+    // 切换语言
+    function switchLang(lang) {
+      // 隐藏所有内容
+      document.querySelectorAll('.lang-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // 移除所有按钮的 active 类
+      document.querySelectorAll('.lang-switcher button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // 显示选中的内容
+      document.getElementById(`content-${lang}`).classList.add('active');
+      document.getElementById(`btn-${lang}`).classList.add('active');
+      
+      // 保存语言偏好
+      localStorage.setItem('readme-lang', lang);
+    }
+
+    // 页面加载时初始化
+    window.addEventListener('DOMContentLoaded', initLang);
+  </script>
+</body>
+</html>
+
